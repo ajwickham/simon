@@ -22,6 +22,7 @@ let count = -1;
 function nextInSequence() {
   count ++;
   index = 0;
+  data.input = [];
   showSequence();
 };
 
@@ -43,8 +44,18 @@ function lightUp(guess) {
   setTimeout(lightSub,1000);
 }
 
-function lightSub(guess) {
+function lightSub() {
   $(data.input[data.input.length -1]).addClass("dull");
+  for (i=0; i<data.input.length; i++) {
+    if(data.sequence[i] != data.input[i]) {
+      break;
+    }  
+  }
+  if(i < data.input.length){
+    for (i=0; i<data.colours.length; i++) {
+      $(data.colours[i]).removeClass("dull");
+    }
+  }
 }
 
 //showSequence()
@@ -52,12 +63,7 @@ function lightSub(guess) {
 Database.prototype.playRound = function(guess) {
   this.input.push(guess)
   lightUp(guess);
-    /*if(guess === this.sequence[this.input.length-1]){
-      alert("yippee");
-        }
-    else { 
-      alert("fail");
-    }*/
+  let i;
 };
 //data.playRound();
 
