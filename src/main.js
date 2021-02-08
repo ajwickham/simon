@@ -1,19 +1,9 @@
-function Database() {
-  this.colours= ["#red","#green","#purple","#blue","#yellow"];
-  this.sequence = [];
-  this.input = [];
-}
+import './css/styles.css';
+import Database from './data.js';
 
 let data = new Database();
-let x;
-let y;
-Database.prototype.generateSequence=function() {
-    for(let i = 0; i < 100; i++) {
-        x = this.colours[(Math.round(Math.random()*4))];
-        this.sequence.push(x); 
-    }
-};
 
+let y;
 data.generateSequence();
 
 let index =0;
@@ -45,7 +35,9 @@ function lightUp(guess) {
 }
 
 function lightSub() {
+  
   $(data.input[data.input.length -1]).addClass("dull");
+  let i;
   for (i=0; i<data.input.length; i++) {
     if(data.sequence[i] != data.input[i]) {
       break;
@@ -56,35 +48,30 @@ function lightSub() {
       $(data.colours[i]).removeClass("dull");
     }
   }
-}
-
-//showSequence()
-
-Database.prototype.playRound = function(guess) {
-  this.input.push(guess)
-  lightUp(guess);
-  let i;
 };
-//data.playRound();
 
+function playRound(guess) {
+  data.input.push(guess)
+  lightUp(guess);
+};
 
 $(document).ready(function() {
   $("#button").click(function() {
     nextInSequence();
   });
   $("#red").click(function() {
-    data.playRound("#red");
+    playRound("#red");
   });
   $("#green").click(function() {
-    data.playRound("#green");
+    playRound("#green");
   });
   $("#purple").click(function() {
-    data.playRound("#purple");
+    playRound("#purple");
   });
   $("#blue").click(function() {
-    data.playRound("#blue");
+    playRound("#blue");
   });
   $("#yellow").click(function() {
-    data.playRound("#yellow");
+    playRound("#yellow");
   });
 });
