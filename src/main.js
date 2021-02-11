@@ -3,7 +3,7 @@ import Database from './data.js';
 
 let data = new Database();
 
-let y;
+
 data.generateSequence();
 
 let index =0;
@@ -14,20 +14,20 @@ function nextInSequence() {
   index = 0;
   data.input = [];
   showSequence();
-};
+}
 
 function showSequence() {  //for some reason setTimeout won't work with prototype methods
   $(data.sequence[index]).removeClass("dull"); 
   setTimeout(showSub,1000);
-};
+}
 
 function showSub()  {
   $(data.sequence[index]).addClass("dull");
   if(index < count) {
-    index +=1
+    index +=1;
     setTimeout(showSequence,1000);
   }
-};
+}
 
 function lightUp(guess) {
   $(guess).removeClass("dull");
@@ -48,12 +48,12 @@ function lightSub() {
       $(data.colours[i]).removeClass("dull");
     }
   }
-};
+}
 
 function playRound(guess) {
-  data.input.push(guess)
+  data.input.push(guess);
   lightUp(guess);
-};
+}
 
 $(document).ready(function() {
   $("#button").click(function() {

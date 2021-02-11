@@ -6,9 +6,9 @@ export default function Database() {
 
 Database.prototype.generateSequence=function() {
   let x;
-    for(let i = 0; i < 100; i++) {
-        x = this.colours[(Math.round(Math.random()*4))];
-        this.sequence.push(x); 
-    }
+  for(let i = 0; i < 100; i++) {
+    x = this.colours[(Math.round(Math.random()*4))];
+    this.sequence.push(x); 
+  }
 };
 
